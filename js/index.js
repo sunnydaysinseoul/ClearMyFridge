@@ -1,12 +1,35 @@
+//***** Selectors
+const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
-const loginButton = document.querySelector("#login-form button");
+const greeting = document.querySelector("#greeting");
 
-const handleLoginButton = () =>{
-    console.log("click");
-    console.dir(loginInput); //loginInput에 어떤 property를 사용할 수 있는지
-    console.log(loginInput.value);
+//***** Variables
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
+//***** Functions
+const paintGreetings = (username) => {
+  greeting.innerText = `Hello, ${username}!`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
+};
+
+const onLoginSubmit = (e) => {
+  e.preventDefault();
+  const username = loginInput.value;
+  localStorage.setItem(USERNAME_KEY, username);
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  paintGreetings(username);
+};
+
+
+//***** Condition check
+const hasUsername = localStorage.getItem(USERNAME_KEY);
+if (hasUsername) {
+  paintGreetings(hasUsername);
+} else {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
 }
 
 
-loginButton.addEventListener("click",handleLoginButton);
+//***** Event Listener
+loginForm.addEventListener("submit", onLoginSubmit);

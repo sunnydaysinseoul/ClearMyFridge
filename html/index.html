@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/common.css">
     <title>ClearMyFridge</title>
 </head>
 <body>
-    <div id="login-form">
-        <input type="text" placeholder="What is your name?">
-        <button>Login</button>
-    </div>
+    <form id="login-form" class="hidden">
+        <input type="text" placeholder="What is your name?" required maxlength="10">
+        <input type="submit" value="Log in">
+    </form>
+    <h3 id="greeting" class="hidden"></h3>
 
+    <h4 id="clock">00:00</h4>
     <script src="../js/index.js"></script>
+    <script src="../js/clock.js"></script>
 </body>
 </html>
