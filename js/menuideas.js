@@ -26,7 +26,7 @@ const menupic = document.querySelector("#menuidea img");
 
 const menuidea = menus[Math.floor(Math.random()*menus.length)];
 
-console.log(menuidea);
+// console.log(menuidea);
 
 menuname.innerText = menuidea.name;
 menupic.src = menuidea.image;
