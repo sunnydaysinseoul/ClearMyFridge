@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>ClearMyFridge</title>
 </head>
 
@@ -23,17 +24,37 @@
         <img src="" alt="food picture" height="100px">
     </div>
 
-    <form action="" id="food-form">
-        <input type="text" required>
-    </form>
-    <ul id="food-list">
+    <!-- 입력 -->
+    <div class="flex-row input-container">
+        <div id="fridge-form" class="input-form">
+            <span><b> 냉장고 </b></span>
+            <form>
+                <input type="text" required>
+            </form>
+            <ul></ul>
+        </div>
+        <div id="freezer-form" class="input-form">
+            <span><b> 냉동실 </b></span>
+            <form>
+                <input type="text" required>
+            </form>
+            <ul></ul>
+        </div>
+        <div id="nonPerishable-form" class="input-form">
+            <span><b> 실온 </b></span>
+            <form>
+                <input type="text" required>
+            </form>
+            <ul></ul>
+        </div>
+        
+    </div>
 
-    </ul>
 
-        <script src="../js/index.js"></script>
-        <script src="../js/clock.js"></script>
-        <script src="../js/menuideas.js"></script>
-        <script src="../js/fridge.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/clock.js"></script>
+    <script src="../js/menuideas.js"></script>
+    <script src="../js/fridge.js"></script>
 </body>
 
 </html>

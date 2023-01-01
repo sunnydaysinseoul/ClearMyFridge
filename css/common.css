@@ -1,3 +1,31 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .hidden {
     display:none;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.input-container{
+    background-color: beige;
+    width:70%;
+    margin:0 auto;
+}
+.input-container .input-form{
+    margin:0 10px;
+    background-color :rgb(220, 235, 255)
+}
+li .delBtn{
+    cursor: pointer;
+    margin-left:auto;
 }
