@@ -29,3 +29,7 @@ li .delBtn{
     cursor: pointer;
     margin-left:auto;
 }
+
+.dragList{
+    cursor: move;
+}
