@@ -15,15 +15,18 @@ const inputForms = document.querySelectorAll(".input-form");
 //***** Variables
 let foodListObj = [];
 const FOODLIST_KEY = "foodListObj";
-let dragStartLi='';
-let draggedData='';
-let dropType='a';
-let dragEndDiv='';
+let dragStartLi = "";
+let draggedData = "";
+let dropType = "a";
+let dragEndDiv = "";
 //***** Functions
 const saveNewFood = (newFood, type) => {
   // 1.LocalStorage에 저장하기
   foodListObj.push(newFood); //array에 push
-
+  foodListObj = foodListObj.sort((prev, cur) => {
+    // 숫자 오름차순 정렬
+    return prev.id - cur.id;
+  });
   localStorage.setItem(FOODLIST_KEY, JSON.stringify(foodListObj)); //localstorage에는 array를 저장하지 못하므로 string형태로 변형후 저장.
 
   // 2.화면에 그리기
@@ -33,6 +36,10 @@ const saveNewFood = (newFood, type) => {
 const deleteList = (e) => {
   const li = e.target.parentElement;
   foodListObj = foodListObj.filter((item) => item.id !== parseInt(li.id));
+  foodListObj = foodListObj.sort((prev, cur) => {
+    // 숫자 오름차순 정렬
+    return prev.id - cur.id;
+  });
   //li.id를 parseInt하는 이유 : DOM의 id는 문자열이기 때문에 Date함수로 저장한 우리 Obj의 id값(=숫자)와 형식이 달라서
   localStorage.setItem(FOODLIST_KEY, JSON.stringify(foodListObj));
 
@@ -57,27 +64,31 @@ const onDragStart = (e) => {
   draggedData = foodListObj.find((item) => item.id == dragId);
   //배열에서 drag할 데이터 찾아두기.
   //onDrop 함수에서 사용함.
-
 };
 const onDrop = (e) => {
   e.preventDefault();
-  
+
   const dropTarget = e.target.tagName; //drop시 떨어지는 target의 태그종류(DIV ,LI...)
   if (dropTarget == "DIV") {
     dropType = e.target.id; //drop되는 div의 이름(=type)
   } else {
     dropType = e.target.closest("div").id; //drop되는 개체의 가장 가까운 parent div요소의 id(=type)
   }
-  const newFoodListObj = foodListObj.map((item) => {
+  let newFoodListObj = foodListObj.map((item) => {
     if (item.id == draggedData.id) {
       item.type = dropType; //drop된 데이터와 같은 데이터만 Obj에서 찾아서 변경.
+      item.id = Date.now(); //id를 현재 수정된 날짜로 변경. (sort위해)
+
       dragStartLi.remove();
-      drawList(draggedData);  // 제대로된 곳에  drop되었을 때 - 드래그시작한 li를 새로운 곳에 draw해주고, 원래 리스트에선 remove.
+      drawList(draggedData); // 제대로된 곳에  drop되었을 때 - 드래그시작한 li를 새로운 곳에 draw해주고, 원래 리스트에선 remove.
       return item;
     }
     return item;
   });
-
+  newFoodListObj = newFoodListObj.sort((prev, cur) => {
+    // 숫자 오름차순 정렬
+    return prev.id - cur.id;
+  });
   localStorage.setItem(FOODLIST_KEY, JSON.stringify(newFoodListObj));
 
   const thisDiv = e.target.closest("div");
@@ -123,6 +134,7 @@ const onFoodSubmit = (e, type) => {
     nonPerishableInput.value = "";
   }
 
+  //LocalStorage에 저장될 데이터 형태!
   const newFood = {
     name: foodValue,
     id: Date.now(),
@@ -155,12 +167,15 @@ nonPerishableForm.addEventListener("submit", (e) => {
   onFoodSubmit(e, "nonPerishable-form");
 });
 
-inputForms.forEach(inputForm => {inputForm.addEventListener("drop", onDrop)});
-inputForms.forEach(inputForm => {inputForm.addEventListener("dragover", onDragOver)});
-inputForms.forEach(inputForm => {inputForm.addEventListener("dragleave",onDragLeave)});
-
-
-
+inputForms.forEach((inputForm) => {
+  inputForm.addEventListener("drop", onDrop);
+});
+inputForms.forEach((inputForm) => {
+  inputForm.addEventListener("dragover", onDragOver);
+});
+inputForms.forEach((inputForm) => {
+  inputForm.addEventListener("dragleave", onDragLeave);
+});
 
 /*참고:
 window.addEventListener("storage",(e)=>console.log(e)); //-storage이벤트는, 같은 도메인의 다른 윈도우/탭/창에서 storage내용변경이 일어났을 때만 감지한다 ㅠㅠ
