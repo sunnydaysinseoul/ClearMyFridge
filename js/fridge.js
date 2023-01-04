@@ -20,7 +20,7 @@ let draggedData = "";
 let dropType = "a";
 let dragEndDiv = "";
 //***** Functions
-const saveNewFood = (newFood, type) => {
+const saveList = (newFood, type) => {
   // 1.LocalStorage에 저장하기
   foodListObj.push(newFood); //array에 push
   foodListObj = foodListObj.sort((prev, cur) => {
@@ -41,7 +41,7 @@ const deleteList = (e) => {
     return prev.id - cur.id;
   });
   //li.id를 parseInt하는 이유 : DOM의 id는 문자열이기 때문에 Date함수로 저장한 우리 Obj의 id값(=숫자)와 형식이 달라서
-  localStorage.setItem(FOODLIST_KEY, JSON.stringify(foodListObj));
+  localStorage.setItem(FOODLquerySelectorAllIST_KEY, JSON.stringify(foodListObj));
 
   li.remove(); //화면에서 바로 지우는 용도
 };
@@ -49,13 +49,15 @@ const deleteList = (e) => {
 //// Drag Events
 const onDragOver = (e) => {
   e.preventDefault();
-  const thisDiv = e.target.closest("div");
-  thisDiv.classList.add("drag-over");
+  // const thisDiv = e.target.closest("div");
+  // thisDiv.classList.add("drag-over");
+
+  e.target.classList.add("drag-over");
 };
 const onDragLeave = (e) => {
   e.preventDefault();
-  const thisDiv = e.target.closest("div");
-  thisDiv.classList.remove("drag-over");
+  const hasClass = document.querySelectorAll(".drag-over");
+  hasClass.forEach((item)=>{item.classList.remove("drag-over")});
 };
 
 const onDragStart = (e) => {
@@ -67,7 +69,9 @@ const onDragStart = (e) => {
 };
 const onDrop = (e) => {
   e.preventDefault();
-
+  const hasClass = document.querySelectorAll(".drag-over");
+  hasClass.forEach((item)=>{item.classList.remove("drag-over")});
+  
   const dropTarget = e.target.tagName; //drop시 떨어지는 target의 태그종류(DIV ,LI...)
   if (dropTarget == "DIV") {
     dropType = e.target.id; //drop되는 div의 이름(=type)
@@ -99,6 +103,7 @@ const drawList = (newFood) => {
   const li = document.createElement("li");
   const span = document.createElement("span");
   const delBtn = document.createElement("i");
+  // li.setAttribute('data-index', index);
   li.append(span);
   li.append(delBtn);
 
@@ -124,7 +129,7 @@ const onFoodSubmit = (e, type) => {
   let foodValue;
   if (type == "fridge-form") {
     foodValue = fridgeInput.value;
-    console.log(fridgeInput);
+
     fridgeInput.value = "";
   } else if (type == "freezer-form") {
     foodValue = freezerInput.value;
@@ -140,7 +145,7 @@ const onFoodSubmit = (e, type) => {
     id: Date.now(),
     type: type,
   };
-  saveNewFood(newFood);
+  saveList(newFood);
 };
 
 //***** Condition check
