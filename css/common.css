@@ -17,19 +17,23 @@
     flex-direction: column;
 }
 .input-container{
-    background-color: beige;
+    /* background-color: beige; */
     width:70%;
     margin:0 auto;
 }
 .input-container .input-form{
     margin:0 10px;
-    background-color :rgb(220, 235, 255)
+    /* background-color :rgb(220, 235, 255) */
 }
 li .delBtn{
     cursor: pointer;
     margin-left:auto;
 }
 
-.dragList{
+.drag-list{
     cursor: move;
+}
+.drag-over{
+    background-color:beige;
+    /* box-shadow: 0 0 0 3px #e96c7c; */
 }

@@ -18,7 +18,7 @@ const FOODLIST_KEY = "foodListObj";
 let dragStartLi='';
 let draggedData='';
 let dropType='a';
-
+let dragEndDiv='';
 //***** Functions
 const saveNewFood = (newFood, type) => {
   // 1.LocalStorage에 저장하기
@@ -38,16 +38,30 @@ const deleteList = (e) => {
 
   li.remove(); //화면에서 바로 지우는 용도
 };
+
+//// Drag Events
+const onDragOver = (e) => {
+  e.preventDefault();
+  const thisDiv = e.target.closest("div");
+  thisDiv.classList.add("drag-over");
+};
+const onDragLeave = (e) => {
+  e.preventDefault();
+  const thisDiv = e.target.closest("div");
+  thisDiv.classList.remove("drag-over");
+};
+
 const onDragStart = (e) => {
   const dragId = e.target.id;
   dragStartLi = e.target; //Drop되면 해당 Li지워주려고 저장.
   draggedData = foodListObj.find((item) => item.id == dragId);
   //배열에서 drag할 데이터 찾아두기.
-  //onDropList 함수에서 사용함.
-};
+  //onDrop 함수에서 사용함.
 
-const onDropList = (e) => {
+};
+const onDrop = (e) => {
   e.preventDefault();
+  
   const dropTarget = e.target.tagName; //drop시 떨어지는 target의 태그종류(DIV ,LI...)
   if (dropTarget == "DIV") {
     dropType = e.target.id; //drop되는 div의 이름(=type)
@@ -65,8 +79,9 @@ const onDropList = (e) => {
   });
 
   localStorage.setItem(FOODLIST_KEY, JSON.stringify(newFoodListObj));
-  
-//   newFoodListObj.forEach((item) => drawList(item)); //화면에 다시그려주기
+
+  const thisDiv = e.target.closest("div");
+  thisDiv.classList.remove("drag-over");
 };
 const drawList = (newFood) => {
   //화면에 리스트 그려주는 용도
@@ -78,7 +93,7 @@ const drawList = (newFood) => {
 
   li.id = newFood.id; //주의 : DOM에서는 id가 문자열로 들어감
   li.draggable = "true";
-  li.classList.add("flex-row", "dragList");
+  li.classList.add("flex-row", "drag-list");
   li.addEventListener("dragstart", onDragStart);
   span.innerText = newFood.name;
   delBtn.classList.add("fa-solid", "fa-delete-left", "delBtn");
@@ -140,10 +155,12 @@ nonPerishableForm.addEventListener("submit", (e) => {
   onFoodSubmit(e, "nonPerishable-form");
 });
 
-inputForms.forEach(inputForm => {inputForm.addEventListener("drop", onDropList)});
-inputForms.forEach(inputForm => {inputForm.addEventListener("dragover", (e) => {
-  e.preventDefault();
-})});
+inputForms.forEach(inputForm => {inputForm.addEventListener("drop", onDrop)});
+inputForms.forEach(inputForm => {inputForm.addEventListener("dragover", onDragOver)});
+inputForms.forEach(inputForm => {inputForm.addEventListener("dragleave",onDragLeave)});
+
+
+
 
 /*참고:
 window.addEventListener("storage",(e)=>console.log(e)); //-storage이벤트는, 같은 도메인의 다른 윈도우/탭/창에서 storage내용변경이 일어났을 때만 감지한다 ㅠㅠ
