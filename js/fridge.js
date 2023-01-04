@@ -11,6 +11,7 @@ const nonPerishableForm = document.getElementById("nonPerishable-form");
 const nonPerishableInput = document.querySelector("#nonPerishable-form input");
 const nonPerishableList = document.querySelector("#nonPerishable-form ul");
 
+const inputForms = document.querySelectorAll(".input-form");
 //***** Variables
 let foodListObj = [];
 const FOODLIST_KEY = "foodListObj";
@@ -130,25 +131,20 @@ if (savedfoodListObj !== null) {
 fridgeForm.addEventListener("submit", (e) => {
   onFoodSubmit(e, "fridge-form");
 });
-fridgeForm.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-fridgeForm.addEventListener("drop", onDropList);
 
 freezerForm.addEventListener("submit", (e) => {
   onFoodSubmit(e, "freezer-form");
 });
-freezerForm.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-freezerForm.addEventListener("drop", onDropList);
 
 nonPerishableForm.addEventListener("submit", (e) => {
   onFoodSubmit(e, "nonPerishable-form");
 });
-nonPerishableForm.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-nonPerishableForm.addEventListener("drop", onDropList);
 
-localStorage.addEventListener("storage",(e)=>console.log(e));
+inputForms.forEach(inputForm => {inputForm.addEventListener("drop", onDropList)});
+inputForms.forEach(inputForm => {inputForm.addEventListener("dragover", (e) => {
+  e.preventDefault();
+})});
+
+/*참고:
+window.addEventListener("storage",(e)=>console.log(e)); //-storage이벤트는, 같은 도메인의 다른 윈도우/탭/창에서 storage내용변경이 일어났을 때만 감지한다 ㅠㅠ
+*/
