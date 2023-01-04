@@ -14,8 +14,10 @@ const nonPerishableList = document.querySelector("#nonPerishable-form ul");
 //***** Variables
 let foodListObj = [];
 const FOODLIST_KEY = "foodListObj";
-let draggedData;
-let dropType;
+let dragStartLi='';
+let draggedData='';
+let dropType='a';
+
 //***** Functions
 const saveNewFood = (newFood, type) => {
   // 1.LocalStorage에 저장하기
@@ -37,6 +39,7 @@ const deleteList = (e) => {
 };
 const onDragStart = (e) => {
   const dragId = e.target.id;
+  dragStartLi = e.target; //Drop되면 해당 Li지워주려고 저장.
   draggedData = foodListObj.find((item) => item.id == dragId);
   //배열에서 drag할 데이터 찾아두기.
   //onDropList 함수에서 사용함.
@@ -50,10 +53,11 @@ const onDropList = (e) => {
   } else {
     dropType = e.target.closest("div").id; //drop되는 개체의 가장 가까운 parent div요소의 id(=type)
   }
-
   const newFoodListObj = foodListObj.map((item) => {
     if (item.id == draggedData.id) {
-      item.type = dropType; //drop된 데이터와 같은 데이터를 Obj에서 찾아서 변경.
+      item.type = dropType; //drop된 데이터와 같은 데이터만 Obj에서 찾아서 변경.
+      dragStartLi.remove();
+      drawList(draggedData);  // 제대로된 곳에  drop되었을 때 - 드래그시작한 li를 새로운 곳에 draw해주고, 원래 리스트에선 remove.
       return item;
     }
     return item;
@@ -146,3 +150,5 @@ nonPerishableForm.addEventListener("dragover", (e) => {
   e.preventDefault();
 });
 nonPerishableForm.addEventListener("drop", onDropList);
+
+localStorage.addEventListener("storage",(e)=>console.log(e));
