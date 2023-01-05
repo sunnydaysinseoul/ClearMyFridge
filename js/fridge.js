@@ -20,7 +20,7 @@ let draggedData = "";
 let dropType = "a";
 let dragEndDiv = "";
 //***** Functions
-const saveList = (newFood, type) => {
+const saveList = (newFood) => {
   // 1.LocalStorage에 저장하기
   foodListObj.push(newFood); //array에 push
   foodListObj = foodListObj.sort((prev, cur) => {
@@ -47,6 +47,13 @@ const deleteList = (e) => {
 };
 
 //// Drag Events
+const onDragStart = (e) => {
+  const dragId = e.target.id;
+  dragStartLi = e.target; //Drop되면 해당 Li지워주려고 저장.
+  draggedData = foodListObj.find((item) => item.id == dragId);
+  //배열에서 drag할 데이터 찾아두기.
+  //onDrop 함수에서 사용함.
+};
 const onDragOver = (e) => {
   e.preventDefault();
   // const thisDiv = e.target.closest("div");
@@ -60,29 +67,23 @@ const onDragLeave = (e) => {
   hasClass.forEach((item)=>{item.classList.remove("drag-over")});
 };
 
-const onDragStart = (e) => {
-  const dragId = e.target.id;
-  dragStartLi = e.target; //Drop되면 해당 Li지워주려고 저장.
-  draggedData = foodListObj.find((item) => item.id == dragId);
-  //배열에서 drag할 데이터 찾아두기.
-  //onDrop 함수에서 사용함.
-};
 const onDrop = (e) => {
   e.preventDefault();
   const hasClass = document.querySelectorAll(".drag-over");
   hasClass.forEach((item)=>{item.classList.remove("drag-over")});
   
-  const dropTarget = e.target.tagName; //drop시 떨어지는 target의 태그종류(DIV ,LI...)
-  if (dropTarget == "DIV") {
-    dropType = e.target.id; //drop되는 div의 이름(=type)
-  } else {
-    dropType = e.target.closest("div").id; //drop되는 개체의 가장 가까운 parent div요소의 id(=type)
-  }
+  // const dropTarget = e.target.tagName; //drop시 떨어지는 target의 태그종류(DIV ,LI...)
+  // if (dropTarget == "DIV") {
+  //   dropType = e.target.id; //drop되는 div의 이름(=type)
+  // } else {
+  //   dropType = e.target.closest("div").id; //drop되는 개체의 가장 가까운 parent div요소의 id(=type)
+  // }
+  dropType = e.currentTarget.id; //e.target대신, 이벤트리스너를 가진 요소를 가리키도록 currentTarget으로 변경
   let newFoodListObj = foodListObj.map((item) => {
     if (item.id == draggedData.id) {
       item.type = dropType; //drop된 데이터와 같은 데이터만 Obj에서 찾아서 변경.
       item.id = Date.now(); //id를 현재 수정된 날짜로 변경. (sort위해)
-
+           console.log(dragStartLi.compareDocumentPosition(e.target));
       dragStartLi.remove();
       drawList(draggedData); // 제대로된 곳에  drop되었을 때 - 드래그시작한 li를 새로운 곳에 draw해주고, 원래 리스트에선 remove.
       return item;
@@ -98,6 +99,7 @@ const onDrop = (e) => {
   const thisDiv = e.target.closest("div");
   thisDiv.classList.remove("drag-over");
 };
+
 const drawList = (newFood) => {
   //화면에 리스트 그려주는 용도
   const li = document.createElement("li");
