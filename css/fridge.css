@@ -36,6 +36,7 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top:40px;
 }
 
 /* Mobile Device */
@@ -49,6 +50,7 @@ li {
 
 .input-container .input-form {
     margin: 0 10px;
+
 }
 
 .drag-list {
