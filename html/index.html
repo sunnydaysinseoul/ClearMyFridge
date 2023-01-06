@@ -6,23 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/fridge.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>ClearMyFridge</title>
 </head>
 
 <body>
-    <form id="login-form" class="hidden">
-        <input type="text" placeholder="What is your name?" required maxlength="10">
-        <input type="submit" value="Log in">
-    </form>
-    <h3 id="greeting" class="hidden"></h3>
-
+    <div id="flex-row">
+        <form id="login-form" class="hidden">
+            <input type="text" placeholder="What is your name?" required maxlength="10">
+            <input type="submit" value="Log in">
+        </form>
+        <h3 id="greeting" class="hidden"></h3>
+    </div>
     <h4 id="clock">00:00</h4>
 
     <div id="menuidea">
         <span></span>
         <img src="" alt="food picture" height="100px">
     </div>
+
+    <div class="js-weather"></div>
 
     <!-- 입력 -->
     <div class="flex-row input-container">
@@ -47,7 +52,7 @@
             </form>
             <ul></ul>
         </div>
-        
+
     </div>
 
 
@@ -55,6 +60,7 @@
     <script src="../js/clock.js"></script>
     <script src="../js/menuideas.js"></script>
     <script src="../js/fridge.js"></script>
+    <script src="../js/weather.js"></script>
 </body>
 
 </html>
