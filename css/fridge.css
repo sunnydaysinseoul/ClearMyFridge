@@ -50,7 +50,7 @@ li {
 
 .input-container .input-form {
     margin: 0 20px;
-    width: 40vh;
+    width: 50vh;
 
 }
 .input-form input{
@@ -75,7 +75,7 @@ li {
         justify-content: center;
     }
     .input-container .input-form {
-        margin: 0 20px;
+        margin: 20px 20px;
         max-width:none;
     
     }
