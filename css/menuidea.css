@@ -1,0 +1,69 @@
+#menuidea {
+    padding: 20px 10px;
+    margin: 0 auto 0 0;
+    height: 120px;
+}
+
+#menuidea span {
+    font-size: .9em;
+    width: 50%;
+    line-height: 24px;
+}
+
+#menuidea img {
+    position: relative;
+    top: -10px;
+    border-radius: 100%;
+    border: 5px solid #395B64;
+
+}
+
+
+#greeting{
+    margin: 0 40px 0 40px;
+    width: fit-content;
+    font-family: 'Yeon Sung', cursive;
+    font-size: 2em;
+}
+
+
+.speech-bubble {
+    position: relative;
+    background-color: #E7F6F2;
+    border-radius: .4em;
+    color: #395B64;
+    text-align: center;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 0;
+    height: 0;
+    border: 41px solid transparent;
+    border-right-color: #E7F6F2;
+    border-left: 0;
+    border-top: 0;
+    margin-top: -20.5px;
+    margin-left: -20px;
+}
+
+.bubble-div {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Mobile Device */
+@media (max-width: 480px) {
+
+    #menuidea{
+        display:none;
+    }
+    #greeting{
+        margin: 0 auto;
+    }
+}

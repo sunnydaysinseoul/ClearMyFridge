@@ -1,7 +1,37 @@
+.info-box{
+    align-items: center;
+}
+
+#weather{
+    width: fit-content;
+    margin : 20px 20px auto auto;
+    background-color:#E7F6F2;
+    padding : 10px 10px;
+    color : #2C3333;
+    font-size: 1em;
+    align-items: center;
+    
+}
+#weather .city-icon{
+    width: 1.5em;
+    height: auto;
+    margin-left : 1em;
+}
+
+#clock{
+    width: fit-content;
+    margin : 10px 20px auto auto;
+    font-size: 1.3em;
+}
+.top-right{
+    margin : 0 0 auto auto;
+    width: fit-content;
+}
+
+
 #login-form{
     display:flex;
     flex-direction: row;
-    width: 50%;
     margin: 0 auto;
-    text-align: center;
+    width: fit-content;
 }

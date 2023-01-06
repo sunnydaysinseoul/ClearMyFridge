@@ -2,40 +2,45 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+body{
     background-color: #2C3333;
     color : #E7F6F2;
 }
-.hidden {
-    display:none;
+input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #E7F6F2;
+    margin: 10px 0;
+    font-size: 20px;
+    color:#E7F6F2;
 }
 
+.hidden {
+    display :none !important;
+}
+.show {
+    display: block !important;
+}
 .flex-row{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+
 .flex-col{
     display: flex;
     flex-direction: column;
 }
-.input-container{
-    /* background-color: beige; */
-    width:70%;
-    margin:0 auto;
-}
-.input-container .input-form{
-    margin:0 10px;
-    /* background-color :rgb(220, 235, 255) */
-}
-li .delBtn{
-    cursor: pointer;
-    margin-left:auto;
-}
 
-.drag-list{
-    cursor: move;
-}
-.drag-over{
-    background-color:beige;
-    /* box-shadow: 0 0 0 3px #e96c7c; */
-}
+
+
+/* Mobile Device */
+@media (max-width: 480px) {
+    .flex-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap : wrap;
+    } 
+} 

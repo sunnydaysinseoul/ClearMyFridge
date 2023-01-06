@@ -8,31 +8,36 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/fridge.css">
+    <link rel="stylesheet" href="../css/menuidea.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>ClearMyFridge</title>
 </head>
 
 <body>
-    <div id="flex-row">
-        <form id="login-form" class="hidden">
-            <input type="text" placeholder="What is your name?" required maxlength="10">
-            <input type="submit" value="Log in">
-        </form>
-        <h3 id="greeting" class="hidden"></h3>
+    <div class="flex-col top-right info-box">
+        <div id="weather" class="flex-row"></div>
+        <h4 id="clock">00:00</h4>
     </div>
-    <h4 id="clock">00:00</h4>
-
-    <div id="menuidea">
-        <span></span>
-        <img src="" alt="food picture" height="100px">
+    <form id="login-form">
+        <input type="text" placeholder="이름을 알려주세요." required maxlength="10">
+        <input type="submit" value="저장">
+    </form>
+    <div class="bubble-div">
+        <span id="greeting" class="hidden"></span>
+        <div id="menuidea" class="speech-bubble flex-row">
+            <span></span>
+            <img src="" alt="food picture" height="100px">
+        </div>
     </div>
 
-    <div class="js-weather"></div>
 
     <!-- 입력 -->
     <div class="flex-row input-container">
         <div id="fridge-form" class="input-form">
-            <span><b> 냉장고 </b></span>
+            <div><b> 냉장고 </b></span>
             <form>
                 <input type="text" required>
             </form>

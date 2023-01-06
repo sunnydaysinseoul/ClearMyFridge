@@ -1,6 +1,6 @@
 const API_KEY = "5ec76f143217881ba2e66dbcf2bf1849"; //https://home.openweathermap.org/에서 받은 API key
 const COORDS = "coords";
-const weather = document.querySelector(".js-weather");
+const weather = document.querySelector("#weather");
 
 //자바스크립트가 좋은 이유! 페이지를 전체 새로고침하지 않고도 데이터를 가져올 수 있음!!
 
@@ -14,7 +14,11 @@ function getWeather(lat,lng){
         // console.log(json)
         const temparature = json.main.temp;
         const place = json.name;
-        weather.innerText = `${place} : ${temparature}℃`
+        const weatherDes = json.weather[0].description;
+        const weatherIconNm = json.weather[0].icon;
+        const weatherIconImg = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weatherIconNm}.svg`;
+        weather.innerHTML = `${place} : ${temparature}℃  <img class="city-icon" src="${weatherIconImg}" alt="${weatherDes}">`;
+
       })
 }
 
