@@ -1,9 +1,17 @@
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 li {
-    list-style-type: none;
+    margin:10px;
+    width: fit-content;
     position: relative;
     font-size: 1.2rem;
     padding: 15px;
-    margin-bottom: 15px;
     background: #395B64;
 }
 
@@ -36,21 +44,16 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top:40px;
-}
-
-/* Mobile Device */
-@media (max-width: 480px) {
-    .input-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+    margin: 40px 0;
 }
 
 .input-container .input-form {
-    margin: 0 10px;
+    margin: 0 20px;
+    width: 40vh;
 
+}
+.input-form input{
+    width:100%;
 }
 
 .drag-list {
@@ -60,4 +63,19 @@ li {
 .drag-over {
     /* background-color: beige; */
     box-shadow: 0 0 0 3px beige;
+}
+
+
+/* Mobile Device */
+@media (max-width: 480px) {
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .input-container .input-form {
+        margin: 0 20px;
+        max-width:none;
+    
+    }
 }
