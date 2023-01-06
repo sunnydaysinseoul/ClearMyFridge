@@ -1,0 +1,37 @@
+li {
+    list-style-type: none;
+    position: relative;
+    font-size: 1.2rem;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #395B64;
+}
+
+.delBtn {
+    cursor: pointer;
+    margin-left: auto;
+    padding:10px 10px;
+}
+.delBtn:before, .delBtn:after {position: absolute; right:15px; top:12px; content:''; height: 8px; width:1px; background-color:#E7F6F2;} 
+.delBtn:before {transform: rotate(45deg);} 
+.delBtn:after {transform: rotate(-45deg);}
+
+.input-container {
+    /* background-color: beige; */
+    width: 70%;
+    margin: 0 auto;
+}
+
+.input-container .input-form {
+    margin: 0 10px;
+    /* background-color :rgb(220, 235, 255) */
+}
+
+.drag-list {
+    cursor: move;
+}
+
+.drag-over {
+    /* background-color: beige; */
+    box-shadow: 0 0 0 3px beige;
+}

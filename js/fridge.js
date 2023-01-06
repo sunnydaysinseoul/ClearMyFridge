@@ -12,6 +12,7 @@ const nonPerishableInput = document.querySelector("#nonPerishable-form input");
 const nonPerishableList = document.querySelector("#nonPerishable-form ul");
 
 const inputForms = document.querySelectorAll(".input-form");
+
 //***** Variables
 let foodListObj = [];
 const FOODLIST_KEY = "foodListObj";
@@ -41,7 +42,7 @@ const deleteList = (e) => {
     return prev.id - cur.id;
   });
   //li.id를 parseInt하는 이유 : DOM의 id는 문자열이기 때문에 Date함수로 저장한 우리 Obj의 id값(=숫자)와 형식이 달라서
-  localStorage.setItem(FOODLquerySelectorAllIST_KEY, JSON.stringify(foodListObj));
+  localStorage.setItem(FOODLIST_KEY, JSON.stringify(foodListObj));
 
   li.remove(); //화면에서 바로 지우는 용도
 };
@@ -114,7 +115,8 @@ const drawList = (newFood) => {
   li.classList.add("flex-row", "drag-list");
   li.addEventListener("dragstart", onDragStart);
   span.innerText = newFood.name;
-  delBtn.classList.add("fa-solid", "fa-delete-left", "delBtn");
+  // delBtn.classList.add("fa-solid", "fa-delete-left", "delBtn");
+  delBtn.classList.add("delBtn");
   delBtn.addEventListener("click", deleteList);
 
   if (newFood.type == "fridge-form") {
