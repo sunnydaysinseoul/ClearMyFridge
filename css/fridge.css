@@ -7,11 +7,12 @@ ul{
     flex-wrap: wrap;
 }
 li {
-    margin:10px;
+    margin:7px;
     width: fit-content;
     position: relative;
-    font-size: 1.2rem;
-    padding: 15px;
+    font-size: 1rem;
+    padding: 10px 15px 10px 10px;
+    border-radius :10px;
     background: #395B64;
 }
 
@@ -24,12 +25,12 @@ li {
 .delBtn:before,
 .delBtn:after {
     position: absolute;
-    right: 15px;
-    top: 12px;
+    right: .8em;
+    top: 1em;
     content: '';
-    height: 8px;
+    height: .5em;
     width: 1px;
-    background-color: #E7F6F2;
+    background-color: #A5C9CA;
 }
 
 .delBtn:before {
