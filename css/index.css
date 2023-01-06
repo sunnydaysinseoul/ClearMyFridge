@@ -29,9 +29,11 @@
 }
 
 
-#login-form{
+.name-form{
     display:flex;
     flex-direction: row;
     margin: 0 auto;
     width: fit-content;
 }
+
+

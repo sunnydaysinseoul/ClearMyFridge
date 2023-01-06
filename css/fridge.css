@@ -10,21 +10,45 @@ li {
 .delBtn {
     cursor: pointer;
     margin-left: auto;
-    padding:10px 10px;
+    padding: 10px 10px;
 }
-.delBtn:before, .delBtn:after {position: absolute; right:15px; top:12px; content:''; height: 8px; width:1px; background-color:#E7F6F2;} 
-.delBtn:before {transform: rotate(45deg);} 
-.delBtn:after {transform: rotate(-45deg);}
+
+.delBtn:before,
+.delBtn:after {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    content: '';
+    height: 8px;
+    width: 1px;
+    background-color: #E7F6F2;
+}
+
+.delBtn:before {
+    transform: rotate(45deg);
+}
+
+.delBtn:after {
+    transform: rotate(-45deg);
+}
 
 .input-container {
-    /* background-color: beige; */
-    width: 70%;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Mobile Device */
+@media (max-width: 480px) {
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 .input-container .input-form {
     margin: 0 10px;
-    /* background-color :rgb(220, 235, 255) */
 }
 
 .drag-list {

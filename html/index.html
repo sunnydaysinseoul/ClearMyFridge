@@ -21,12 +21,14 @@
         <div id="weather" class="flex-row"></div>
         <h4 id="clock">00:00</h4>
     </div>
-    <form id="login-form">
+    <div id="login-form" class="hidden">
+    <form class="flex-row name-form">
         <input type="text" placeholder="이름을 알려주세요." required maxlength="10">
         <input type="submit" value="저장">
     </form>
-    <div class="bubble-div">
-        <span id="greeting" class="hidden"></span>
+</div>
+    <div id="bubble" class="flex-row hidden">
+        <span id="greeting"></span>
         <div id="menuidea" class="speech-bubble flex-row">
             <span></span>
             <img src="" alt="food picture" height="100px">
@@ -35,9 +37,9 @@
 
 
     <!-- 입력 -->
-    <div class="flex-row input-container">
+    <div class="input-container">
         <div id="fridge-form" class="input-form">
-            <div><b> 냉장고 </b></span>
+            <span><b> 냉장고 </b></span>
             <form>
                 <input type="text" required>
             </form>
@@ -63,7 +65,6 @@
 
     <script src="../js/index.js"></script>
     <script src="../js/clock.js"></script>
-    <script src="../js/menuideas.js"></script>
     <script src="../js/fridge.js"></script>
     <script src="../js/weather.js"></script>
 </body>

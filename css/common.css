@@ -26,6 +26,7 @@ input{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap : wrap;
 }
 
 .flex-col{
@@ -37,10 +38,5 @@ input{
 
 /* Mobile Device */
 @media (max-width: 480px) {
-    .flex-row{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap : wrap;
-    } 
+
 } 

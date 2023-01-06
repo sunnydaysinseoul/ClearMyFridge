@@ -4,6 +4,7 @@ const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 const menuname = document.querySelector("#menuidea span");
 const menupic = document.querySelector("#menuidea img");
+const bubble = document.querySelector("#bubble");
 
 const menus = [
   {
@@ -40,16 +41,13 @@ const paintGreetings = (username) => {
   const menuname = document.querySelector("#menuidea span");
   greeting.innerHTML = `안녕하세요, <b>${username}</b>님! `;
   menuname.innerHTML = ` 오늘은<br><i><b>${menuidea.name}</b></i><br>어떠세요?`;
-  greeting.classList.remove(HIDDEN_CLASSNAME);
-  greeting.classList.add(SHOW_CLASSNAME);
-
+  bubble.classList.remove(HIDDEN_CLASSNAME);
 };
 
 const onLoginSubmit = (e) => {
   e.preventDefault();
   const username = loginInput.value;
   localStorage.setItem(USERNAME_KEY, username);
-  loginForm.classList.remove(SHOW_CLASSNAME);
   loginForm.classList.add(HIDDEN_CLASSNAME);
   paintGreetings(username);
 };
@@ -58,10 +56,10 @@ const onLoginSubmit = (e) => {
 //***** Condition check
 const hasUsername = localStorage.getItem(USERNAME_KEY);
 if (hasUsername) {
-  loginForm.classList.add(HIDDEN_CLASSNAME);
+  // loginForm.classList.add(HIDDEN_CLASSNAME);
   paintGreetings(hasUsername);
 } else {
-  // greeting.classList.add(HIDDEN_CLASSNAME);
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
 }
 
 
