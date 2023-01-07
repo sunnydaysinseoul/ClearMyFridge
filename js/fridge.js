@@ -152,7 +152,7 @@ const onFoodSubmit = (e, type) => {
   saveList(newFood);
 };
 
-//***** Condition check
+//***** Initial Condition check
 
 //실행시 localStorage 값 여부 체크.
 const savedfoodListObj = localStorage.getItem(FOODLIST_KEY);

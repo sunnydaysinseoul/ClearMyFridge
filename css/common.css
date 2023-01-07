@@ -1,13 +1,43 @@
 *{
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
+}
+html{
+    height: 100%;
 }
 body{
     background-color: #2C3333;
     color : #E7F6F2;
     min-width: 300px;
+    height:100%;
+
 }
+.wrap{
+    position: relative;
+  min-height: 100%;
+  padding-bottom: 114px;
+}
+
+footer {
+    position: absolute;
+	bottom: 0;
+	width: 100%;
+    background-color: #252b2b;
+    color:#788a8a;
+	/* height: 30px; 내용물에 따라 알맞는 값 설정 */
+}
+footer p{
+    width:fit-content;
+    margin:20px auto;
+}
+footer p a{
+    text-decoration: none;
+    color:#8ea4a4;
+}
+
+/* -------- */
+
 input{
     background-color: transparent;
     border: none;
@@ -33,20 +63,6 @@ input{
 .flex-col{
     display: flex;
     flex-direction: column;
-}
-
-footer {
-	width: 100%;
-	height: 30px; /* 내용물에 따라 알맞는 값 설정 */
-	bottom: 0;
-}
-footer p{
-    width:fit-content;
-    margin:20px auto;
-}
-footer a{
-    text-decoration: none;
-    color:#E7F6F2;
 }
 
 /* Mobile Device */

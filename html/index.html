@@ -17,64 +17,69 @@
 </head>
 
 <body>
-    <div class="flex-col top-right info-box">
-        <div id="weather" class="flex-row"></div>
-        <h4 id="clock">00:00</h4>
-    </div>
-    <div id="login-form" class="hidden">
-    <form class="flex-row name-form">
-        <input type="text" placeholder="이름을 알려주세요." required maxlength="10">
-        <input type="submit" value="저장">
-    </form>
-</div>
-    <div id="bubble" class="flex-row hidden">
-        <span id="greeting"></span>
-        <div id="menuidea" class="speech-bubble flex-row">
-            <span></span>
-            <img src="" alt="food picture" height="100px">
+    <div class="wrap">
+        <div class="flex-col top-right info-box">
+            <div id="weather" class="flex-row"></div>
+            <h4 id="clock">00:00</h4>
         </div>
-    </div>
-
-
-    <!-- 입력 -->
-    <div class="input-container">
-        <div id="fridge-form" class="input-form">
-            <span><b> 냉장고 </b></span>
-            <form>
-                <input type="text" required placeholder="냉장식품 입력">
+        <div id="login-form" class="hidden">
+            <form class="flex-row name-form">
+                <input type="text" placeholder="이름을 알려주세요." required maxlength="10">
+                <input type="submit" value="저장">
             </form>
-            <ul></ul>
         </div>
-        <div id="freezer-form" class="input-form">
-            <span><b> 냉동실 </b></span>
-            <form>
-                <input type="text" required placeholder="냉동식품 입력">
-            </form>
-            <ul></ul>
-        </div>
-        <div id="nonPerishable-form" class="input-form">
-            <span><b> 실온 </b></span>
-            <form>
-                <input type="text" required placeholder="상온식품 입력">
-            </form>
-            <ul></ul>
+        <div id="bubble" class="flex-row hidden">
+            <span id="greeting"></span>
+            <div id="menuidea" class="speech-bubble flex-row">
+                <span></span>
+                <img src="" alt="food picture" height="100px">
+            </div>
         </div>
 
+
+        <!-- 입력 -->
+        <div class="input-container">
+            <div id="fridge-form" class="input-form">
+                <span><b> 냉장고 </b></span>
+                <form>
+                    <input type="text" required placeholder="냉장식품 입력">
+                </form>
+                <ul></ul>
+            </div>
+            <div id="freezer-form" class="input-form">
+                <span><b> 냉동실 </b></span>
+                <form>
+                    <input type="text" required placeholder="냉동식품 입력">
+                </form>
+                <ul></ul>
+            </div>
+            <div id="nonPerishable-form" class="input-form">
+                <span><b> 실온 </b></span>
+                <form>
+                    <input type="text" required placeholder="상온식품 입력">
+                </form>
+                <ul></ul>
+            </div>
+
+        </div>
+
+
+        <script src="../js/index.js"></script>
+        <script src="../js/clock.js"></script>
+        <!-- <script src="../js/fridge.js"></script> -->
+        <script src="../js/fridge_ver2.js"></script>
+        <script src="../js/weather.js"></script>
+
+
+        <footer>
+            <p>
+                <span><b>Ⓒ 2023.<a
+                    href="https://github.com/thesunny-dev/ClearMyFridge">sunnydaysinseoul</a> - ClearMyFridge</b></span>
+                <br>
+                All rights reserved.
+            </p>
+        </footer>
     </div>
-
-
-    <script src="../js/index.js"></script>
-    <script src="../js/clock.js"></script>
-    <script src="../js/fridge.js"></script>
-    <script src="../js/weather.js"></script>
 </body>
 
-<footer>
-    <hr>
-    <p>
-        <span><b>ClearMyFridge - 2023</b></span>
-        <br>
-        <span> Repo : <a href="https://github.com/thesunny-dev/ClearMyFridge">https://github.com/thesunny-dev/ClearMyFridge</a></span>
-    </p>
-</footer>
 </html>
