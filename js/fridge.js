@@ -133,7 +133,6 @@ const onFoodSubmit = (e, type) => {
   let foodValue;
   if (type == "fridge-form") {
     foodValue = fridgeInput.value;
-
     fridgeInput.value = "";
   } else if (type == "freezer-form") {
     foodValue = freezerInput.value;
