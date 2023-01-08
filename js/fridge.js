@@ -59,10 +59,10 @@ const onDragStart = (e) => {
 };
 const onDragOver = (e) => {
   e.preventDefault();
-  // const thisDiv = e.target.closest("div");
-  // thisDiv.classList.add("drag-over");
+  const thisDiv = e.target.closest("div");
+  thisDiv.classList.add("drag-over");
 
-  e.target.classList.add("drag-over");
+  // e.target.classList.add("drag-over");
 };
 const onDragLeave = (e) => {
   e.preventDefault();
