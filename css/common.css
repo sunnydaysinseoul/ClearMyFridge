@@ -11,12 +11,14 @@ body{
     color : #E7F6F2;
     min-width: 300px;
     height:100%;
-
+    margin:0;
+    padding:0;
 }
 .wrap{
     position: relative;
-  min-height: 100%;
-  padding-bottom: 114px;
+    min-height: 100%;
+    min-width: 100%;
+  /* padding-bottom: 114px; */
 }
 
 footer {
@@ -67,7 +69,7 @@ input{
 #settings{
     cursor: pointer;
     font-size: 23px;
-    margin:10px 0;
+    margin:10px 10px;
 }
 /* Mobile Device */
 @media (max-width: 480px) {
