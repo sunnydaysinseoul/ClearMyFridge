@@ -1,4 +1,5 @@
 const basicDiv = document.querySelector(".basic-ingredient #basic-form");
+const editRecommend = document.querySelector(".basic-ingredient #edit-recommend");
 const editBtn = document.querySelector(".basic-ingredient #edit-btn");
 const basicForm =  document.querySelector(".basic-ingredient form");
 const basicTextarea = document.querySelector(".basic-ingredient form textarea");
@@ -29,6 +30,24 @@ const editForm = (e) =>{
     basicForm.classList.remove("hidden");
 }
 
+const onRecommendCopy = (e)=>{
+    const copyText = `<b>🥫소스/장류 (냉장)</b>
+<br>케찹 / 마요네즈 / 고추장 / 된장
+<br>
+<br><b>🥫소스/장류 (상온)</b>
+<br>
+<br><b>🥤음료류</b>
+<br>`;
+    window.navigator.clipboard.writeText(copyText);
+    const getParent = e.target.closest("form");
+    const copyAlert = document.createElement("span");
+    copyAlert.innerText = "클립보드에 복사되었습니다.";
+    copyAlert.style = "margin : 0 0 0 auto;";
+    getParent.append(copyAlert);
+ 
+    setTimeout(()=>{copyAlert.remove()},2000);
+}
+
 //***** Initial Condition check
 const savedBasicObj = localStorage.getItem(BASICLIST_KEY);
 if (savedBasicObj !== null) {
@@ -45,3 +64,6 @@ if (savedBasicObj !== null) {
 //***** Event Listener
 editBtn.addEventListener("click",editForm);
 basicForm.addEventListener("submit",saveForm);
+editRecommend.addEventListener("click",onRecommendCopy);
+editRecommend.addEventListener("mouseenter",onRecommendEnter);
+editRecommend.addEventListener("mouseleave",onRecommendLeave);

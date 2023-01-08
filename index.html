@@ -47,11 +47,14 @@
             <span class="title"><b> 기본재료 </b></span>
             <div id="basic-form">
                 <div></div>
-                <i id="edit-btn">🖊</i>
+                <i id="edit-btn"  title="수정">🖊</i>
             </div>
             <form class="flex-row">
                 <textarea required placeholder="소스/장류/음료 등 기본재료를 입력해주세요. (HTML태그 사용가능)"></textarea>
-                <input type="submit" value="✔"></input>
+                <div class="flex-col">
+                    <input type="submit" value="✔"></input>
+                    <i id="edit-recommend" title="추천 템플릿을 복사합니다.">📋</i>
+                </div>
             </form>
         </div>
 
