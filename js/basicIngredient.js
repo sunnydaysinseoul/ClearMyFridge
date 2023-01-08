@@ -65,5 +65,3 @@ if (savedBasicObj !== null) {
 editBtn.addEventListener("click",editForm);
 basicForm.addEventListener("submit",saveForm);
 editRecommend.addEventListener("click",onRecommendCopy);
-editRecommend.addEventListener("mouseenter",onRecommendEnter);
-editRecommend.addEventListener("mouseleave",onRecommendLeave);
