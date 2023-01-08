@@ -112,7 +112,7 @@ const drawList = (newFood) => {
 
   li.id = newFood.id; //주의 : DOM에서는 id가 문자열로 들어감
   li.draggable = "true";
-  li.classList.add("flex-row", "drag-list");
+  li.classList.add("flex-row", "draggable");
   li.addEventListener("dragstart", onDragStart);
   span.innerText = newFood.name;
   // delBtn.classList.add("fa-solid", "fa-delete-left", "delBtn");

@@ -57,9 +57,12 @@ li {
     width:100%;
 }
 
-.drag-list {
+.draggable {
     cursor: move;
 }
+.draggable-list li.over .draggable {
+    box-shadow: 0 0 0 3px beige;
+  }
 
 .drag-over {
     /* background-color: beige; */

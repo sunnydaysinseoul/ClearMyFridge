@@ -14,28 +14,107 @@ const inputForms = document.querySelectorAll(".input-form");
 let fridgeObj = [];
 let freezerObj = [];
 let nonPeriObj = [];
-
+let startLi;
+let chkObj;
 const FRIDGEOBJ_KEY = "fridgeObj";
 const FREEZEROBJ_KEY = "freezerObj";
 const NONPERIOBJ_KEY = "nonPeriObj";
 
 //***** Functions
-const deleteList = (e) => {
-  const li = e.target.parentElement;
-  
+const fromWhatObj = (li) =>{
+  //클릭한 li가 어떤 Obj에 있는지 찾아서 지우기.
   const chkFridgeObj = fridgeObj.filter((item) => item.id == parseInt(li.id));
   const chkFreezerObj = freezerObj.filter((item) => item.id == parseInt(li.id));
   const chkNonPeriObj = nonPeriObj.filter((item) => item.id == parseInt(li.id));
-  // console.log(fridgeObj.length,freezerObj.length,nonPeriObj.length);
+  
   if(chkFridgeObj.length>0){
+    chkObj = FRIDGEOBJ_KEY;
+  }
+  if(chkFreezerObj.length>0){
+    chkObj = FREEZEROBJ_KEY;
+  }
+  if(chkNonPeriObj.length>0){
+    chkObj = NONPERIOBJ_KEY;
+  }
+  return chkObj;
+}
+function insertAfter(newNode, existingNode) {
+  existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
+
+const dragStart=(e)=>{
+  startLi = e.target.closest('li');
+  e.dataTransfer.setData("id",e.target.id);
+}
+const dragEnter=(e)=>{
+  e.target.classList.add('over');
+}
+const dragOver=(e)=>{
+  e.preventDefault();
+}
+const dragLeave=(e)=>{
+  e.target.classList.remove('over');
+}
+const dragDrop=(e)=>{
+  const dropLi = e.target.closest('li');
+  insertAfter(startLi,dropLi);
+  
+  const thisObj = fromWhatObj(startLi);
+  const startId = e.dataTransfer.getData("id");
+  const dropId = e.target.closest('li').getAttribute('id');
+  
+  console.log(startId,dropId);
+  if(thisObj == FRIDGEOBJ_KEY){
+    console.log(fridgeObj);
+    const resultMap = fridgeObj.map((item)=>{
+      item.id == dropId ?
+      console.log('aaaa')
+      :(
+      item.id = startId ?
+      console.log('bbbb') :
+      console.log('cccc'))})
+      
+    console.log(resultMap);
+  }else if(thisObj = FREEZEROBJ_KEY){
+
+  }else if(thisObj = NONPERIOBJ_KEY){
+
+  }
+
+}
+
+const addEventListeners=()=>{
+  const draggables = document.querySelectorAll('.draggable');
+  const dragListItems = document.querySelectorAll('.draggable-list li');
+
+  draggables.forEach(draggable => {
+    draggable.addEventListener('dragstart', dragStart);
+  });
+
+  dragListItems.forEach(item => {
+    item.addEventListener('dragover', dragOver);
+    item.addEventListener('drop', dragDrop);
+    item.addEventListener('dragenter', dragEnter);
+    item.addEventListener('dragleave', dragLeave);
+  });
+}
+
+
+const deleteList = (e) => {
+  const li = e.target.parentElement;
+  
+  //클릭한 li가 어떤 Obj에 있는지 찾아서 지우기.
+  fromWhatObj(li);
+  
+  if(chkObj = FRIDGEOBJ_KEY){
     fridgeObj=fridgeObj.filter((item) => item.id !== parseInt(li.id));
     localStorage.setItem(FRIDGEOBJ_KEY, JSON.stringify(fridgeObj));
   }
-  if(chkFreezerObj.length>0){
+  if(chkObj = FREEZEROBJ_KEY){
     freezerObj=freezerObj.filter((item) => item.id !== parseInt(li.id));
     localStorage.setItem(FREEZEROBJ_KEY, JSON.stringify(freezerObj));
   }
-  if(chkNonPeriObj.length>0){
+  if(chkObj = NONPERIOBJ_KEY){
     nonPeriObj=nonPeriObj.filter((item) => item.id !== parseInt(li.id));
     localStorage.setItem(NONPERIOBJ_KEY, JSON.stringify(nonPeriObj));
   }
@@ -46,7 +125,7 @@ const deleteList = (e) => {
 
 const drawList = (newFood,type) => {
   //화면에 리스트 그려주는 용도
-  const li = document.createElement("li");
+  let li = document.createElement("li");
   const span = document.createElement("span");
   const delBtn = document.createElement("i");
   // li.setAttribute('data-index', index);
@@ -55,7 +134,7 @@ const drawList = (newFood,type) => {
 
   li.id = newFood.id; //주의 : DOM에서는 id가 문자열로 들어감
   li.draggable = "true";
-  li.classList.add("flex-row", "drag-list");
+  li.classList.add("flex-row", "draggable");
   
   span.innerText = newFood.name;
   delBtn.classList.add("delBtn");
@@ -68,6 +147,8 @@ const drawList = (newFood,type) => {
   } else if (type == NONPERIOBJ_KEY) {
     nonPerishableList.append(li);
   }
+
+  addEventListeners();
 };
 
 
@@ -106,7 +187,6 @@ const onFoodSubmit = (e, type) => {
   const newFood = {
     name: foodValue,
     id: Date.now(),
-    type : type,
   };
   saveList(newFood,type);
 };
@@ -119,18 +199,28 @@ const savedNONPERIOBJ = localStorage.getItem(NONPERIOBJ_KEY);
 
 
 if (savedFRIDGEOBJ !== null) {
-  const parsedObj = JSON.parse(savedFRIDGEOBJ);
+  let parsedObj = JSON.parse(savedFRIDGEOBJ);
   parsedObj.forEach((item) => drawList(item,FRIDGEOBJ_KEY)); //저장된 값 화면에 그려주기
+  parsedObj = parsedObj.sort((prev, cur) => {
+    return prev.id - cur.id;
+  });
+
   fridgeObj = parsedObj; //시작시 빈Obj로 지정하니 값이 있는경우 덮어씌워줌.
 }
 if(savedFREEZEROBJ !== null) {
-  const parsedObj = JSON.parse(savedFREEZEROBJ);
-  parsedObj.forEach((item) => drawList(item,FREEZEROBJ_KEY)); 
+  let parsedObj = JSON.parse(savedFREEZEROBJ);
+  parsedObj.forEach((item) => drawList(item,FREEZEROBJ_KEY));
+  parsedObj = parsedObj.sort((prev, cur) => {
+    return prev.id - cur.id;
+  });
   freezerObj = parsedObj; 
 }
 if(savedNONPERIOBJ!== null){
-  const parsedObj = JSON.parse(savedNONPERIOBJ);
-  parsedObj.forEach((item) => drawList(item,NONPERIOBJ_KEY)); //저장된 값 화면에 그려주기
+  let parsedObj = JSON.parse(savedNONPERIOBJ);
+  parsedObj.forEach((item) => drawList(item,NONPERIOBJ_KEY));
+  parsedObj = parsedObj.sort((prev, cur) => {
+    return prev.id - cur.id;
+  });
   nonPeriObj = parsedObj; 
 }
 
