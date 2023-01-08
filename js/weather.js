@@ -39,10 +39,13 @@ function handleGeoSuccess(position) { //askForCoords의 getCurrentPosition()에 
   };
   saveCoords(coordsObj); //현재위치의 [위도,경도] Object를 saveCoords()함수에 입력
   getWeather(latitude,longitude); //getWeather함수에 현재위치의 위도,경도를 입력(API에서 날씨 fetch하기 위함.)
+  weather.classList.remove("hidden");
+  weather.classList.add("show");
 }
 
 function handleGeoError() { //askForCoords의 getCurrentPosition()에 필요한 값2
-  console.log("Failed to get Geo!");
+  // weather.innerHTML = '날씨정보 확인불가'
+  weather.classList.add("hidden");
 }
 
 function askForCoords() {

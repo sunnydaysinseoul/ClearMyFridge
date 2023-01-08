@@ -57,6 +57,7 @@ const onSettingsClick = (e) =>{
   const confirmReset = confirm("저장된 모든 설정값을 삭제합니다.")
   if(confirmReset){
     localStorage.clear();
+    window.location.reload();
   }else{
     return;
   }
