@@ -67,6 +67,48 @@ li {
 }
 
 
+.basic-ingredient{
+    width:80%;
+    margin:30px auto 20px auto;
+}
+#basic-form{
+    width: 100%;
+    height: fit-content;
+    background-color: #395B64;
+    color:#A5C9CA;
+    border-radius :10px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin:7px;
+    position: relative;
+    min-height: 50px;
+    
+}
+#basic-form #edit-btn{
+    cursor: pointer;
+    color:white;
+    padding: 10px 10px;
+    position: absolute;
+    right: .2em;
+    top: .005em;
+    content: '';
+
+}
+.basic-ingredient form{
+    width:100%;
+    height: fit-content;
+}
+.basic-ingredient textarea{
+    width: 95%;
+    background-color: transparent;
+    color:#A5C9CA;
+    resize:vertical;
+    border-radius: 10px;
+}
+.basic-ingredient input{
+    border: none;
+}
+
 /* Mobile Device */
 @media (max-width: 480px) {
     .input-container {
