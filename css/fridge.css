@@ -121,6 +121,7 @@ li {
 }
 .basic-ingredient input{
     border: none;
+    align-text:center;
 }
 
 /* Mobile Device */
