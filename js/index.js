@@ -7,7 +7,6 @@ const menupic = document.querySelector("#menuidea img");
 const bubble = document.querySelector("#bubble");
 const settings = document.querySelector("#settings");
 
-
 const menus = [
   {
       name : "버거",
