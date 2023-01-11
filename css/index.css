@@ -27,6 +27,10 @@
     margin : 0 0 auto auto;
     width: fit-content;
 }
+.top-left{
+    margin : 0 auto auto 0;
+    width: fit-content;
+}
 
 
 .name-form{

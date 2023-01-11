@@ -5,27 +5,29 @@ const greeting = document.querySelector("#greeting");
 const menuname = document.querySelector("#menuidea span");
 const menupic = document.querySelector("#menuidea img");
 const bubble = document.querySelector("#bubble");
+const settings = document.querySelector("#settings");
+
 
 const menus = [
   {
       name : "버거",
-      image : "../img/burger.jpg",
+      image : "./img/burger.jpg",
   },
   {
       name : "볶음면",
-      image : "../img/friednoodles.jpg",
+      image : "./img/friednoodles.jpg",
   },
   {
       name : "팬케익",
-      image : "../img/pancakes.jpg",
+      image : "./img/pancakes.jpg",
   },
   {
       name : "샌드위치",
-      image : "../img/sandwich.jpg",
+      image : "./img/sandwich.jpg",
   },
   {
       name : "요거트볼",
-      image : "../img/yogurtbowl.jpg",
+      image : "./img/yogurtbowl.jpg",
   },
 ];
 const menuidea = menus[Math.floor(Math.random()*menus.length)];
@@ -51,6 +53,22 @@ const onLoginSubmit = (e) => {
   loginForm.classList.add(HIDDEN_CLASSNAME);
   paintGreetings(username);
 };
+const onSettingsClick = (e) =>{
+  const confirmReset = confirm("저장된 모든 설정값을 삭제합니다.")
+  if(confirmReset){
+    localStorage.clear();
+    window.location.reload();
+  }else{
+    return;
+  }
+}
+const onSettingsEnter = (e) =>{
+  settings.innerHTML = "&#9881; Click to reset."
+}
+
+const onSettingsLeave = (e) =>{
+  settings.innerHTML = "&#9881;";
+}
 
 
 //***** Condition check
@@ -65,3 +83,6 @@ if (hasUsername) {
 
 //***** Event Listener
 loginForm.addEventListener("submit", onLoginSubmit);
+settings.addEventListener("mouseenter",onSettingsEnter);
+settings.addEventListener("mouseleave",onSettingsLeave);
+settings.addEventListener("click",onSettingsClick);

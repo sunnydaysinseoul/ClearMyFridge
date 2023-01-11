@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/fridge.css">
-    <link rel="stylesheet" href="../css/menuidea.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/fridge.css">
+    <link rel="stylesheet" href="./css/menuidea.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
@@ -18,9 +18,13 @@
 
 <body>
     <div class="wrap">
-        <div class="flex-col top-right info-box">
-            <div id="weather" class="flex-row"></div>
-            <h4 id="clock">00:00</h4>
+        <div class="flex-row">
+            <div class="top-left" id="settings">&#9881;</div>
+
+            <div class="flex-col top-right info-box">
+                <div id="weather" class="flex-row"></div>
+                <h4 id="clock">00:00</h4>
+            </div>
         </div>
         <div id="login-form" class="hidden">
             <form class="flex-row name-form">
@@ -28,6 +32,7 @@
                 <input type="submit" value="저장">
             </form>
         </div>
+
         <div id="bubble" class="flex-row hidden">
             <span id="greeting"></span>
             <div id="menuidea" class="speech-bubble flex-row">
@@ -38,23 +43,38 @@
 
 
         <!-- 입력 -->
+        <div class="basic-ingredient">
+            <span class="title"><b> 기본재료 </b></span>
+            <div id="basic-form">
+                <div></div>
+                <i id="edit-btn"  title="수정">🖊</i>
+            </div>
+            <form class="flex-row">
+                <textarea required placeholder="소스/장류/음료 등 기본재료를 입력해주세요. (HTML태그 사용가능)"></textarea>
+                <div class="flex-col">
+                    <input type="submit" value="✔"></input>
+                    <i id="edit-recommend" title="추천 템플릿을 복사합니다.">📋</i>
+                </div>
+            </form>
+        </div>
+
         <div class="input-container">
             <div id="fridge-form" class="input-form">
-                <span><b> 냉장고 </b></span>
+                <span class="title"><b> 냉장고 </b></span>
                 <form>
                     <input type="text" name = "fridgeInput" required placeholder="냉장식품 입력">
                 </form>
                 <ul class="draggable-list"></ul>
             </div>
             <div id="freezer-form" class="input-form">
-                <span><b> 냉동실 </b></span>
+                <span class="title"><b> 냉동실 </b></span>
                 <form>
                     <input type="text" name = "freezerInput" required placeholder="냉동식품 입력">
                 </form>
                 <ul class="draggable-list"></ul>
             </div>
             <div id="nonPerishable-form" class="input-form">
-                <span><b> 실온 </b></span>
+                <span class="title"><b> 실온 </b></span>
                 <form>
                     <input type="text" name = "nonPeriInput" required placeholder="상온식품 입력">
                 </form>
@@ -64,17 +84,16 @@
         </div>
 
 
-        <script src="../js/index.js"></script>
-        <script src="../js/clock.js"></script>
-        <!-- <script src="../js/fridge.js"></script> -->
-        <script src="../js/fridge_ver2.js"></script>
-        <script src="../js/weather.js"></script>
-
+        <script src="./js/index.js"></script>
+        <script src="./js/clock.js"></script>
+        <script src="./js/fridge.js"></script>
+        <script src="./js/basicIngredient.js"></script>
+        <script src="./js/weather.js"></script>
 
         <footer>
             <p>
-                <span><b>Ⓒ 2023.<a
-                    href="https://github.com/thesunny-dev/ClearMyFridge">sunnydaysinseoul</a> - ClearMyFridge</b></span>
+                <span><b>Ⓒ 2023.<a href="https://github.com/thesunny-dev/ClearMyFridge">sunnydaysinseoul</a> -
+                        ClearMyFridge</b></span>
                 <br>
                 All rights reserved.
             </p>
