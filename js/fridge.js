@@ -67,14 +67,18 @@ const onDragOver = (e) => {
 const onDragLeave = (e) => {
   e.preventDefault();
   const hasClass = document.querySelectorAll(".drag-over");
-  hasClass.forEach((item)=>{item.classList.remove("drag-over")});
+  hasClass.forEach((item) => {
+    item.classList.remove("drag-over");
+  });
 };
 
 const onDrop = (e) => {
   e.preventDefault();
   const hasClass = document.querySelectorAll(".drag-over");
-  hasClass.forEach((item)=>{item.classList.remove("drag-over")});
-  
+  hasClass.forEach((item) => {
+    item.classList.remove("drag-over");
+  });
+
   // const dropTarget = e.target.tagName; //drop시 떨어지는 target의 태그종류(DIV ,LI...)
   // if (dropTarget == "DIV") {
   //   dropType = e.target.id; //drop되는 div의 이름(=type)
@@ -86,7 +90,7 @@ const onDrop = (e) => {
     if (item.id == draggedData.id) {
       item.type = dropType; //drop된 데이터와 같은 데이터만 Obj에서 찾아서 변경.
       item.id = Date.now(); //id를 현재 수정된 날짜로 변경. (sort위해)
-           console.log(dragStartLi.compareDocumentPosition(e.target));
+      console.log(dragStartLi.compareDocumentPosition(e.target));
       dragStartLi.remove();
       drawList(draggedData); // 제대로된 곳에  drop되었을 때 - 드래그시작한 li를 새로운 곳에 draw해주고, 원래 리스트에선 remove.
       return item;
@@ -191,4 +195,3 @@ inputForms.forEach((inputForm) => {
 /*참고:
 window.addEventListener("storage",(e)=>console.log(e)); //-storage이벤트는, 같은 도메인의 다른 윈도우/탭/창에서 storage내용변경이 일어났을 때만 감지한다 ㅠㅠ
 */
-
