@@ -1,0 +1,147 @@
+ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+li {
+    margin:7px;
+    width: fit-content;
+    position: relative;
+    font-size: 1rem;
+    padding: 10px 15px 10px 10px;
+    border-radius :10px;
+    background: #395B64;
+}
+
+.delBtn {
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px 10px;
+}
+
+.delBtn:before,
+.delBtn:after {
+    position: absolute;
+    right: .8em;
+    top: 1em;
+    content: '';
+    height: .5em;
+    width: 1px;
+    background-color: #A5C9CA;
+}
+
+.delBtn:before {
+    transform: rotate(45deg);
+}
+
+.delBtn:after {
+    transform: rotate(-45deg);
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.input-container .input-form {
+    margin: 0 20px;
+    width: 50vh;
+
+}
+.input-form input{
+    width:100%;
+}
+
+.draggable {
+    cursor: move;
+}
+.draggable-list li.over .draggable {
+    box-shadow: 0 0 0 3px beige;
+  }
+
+.drag-over {
+    /* background-color: beige; */
+    box-shadow: 0 0 0 3px beige;
+}
+
+
+.basic-ingredient{
+    width:75%;
+    margin:30px auto 20px auto;
+}
+#basic-form{
+    width: 100%;
+    height: fit-content;
+    background-color: #395B64;
+    color:#A5C9CA;
+    border-radius :10px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin:7px;
+    position: relative;
+    min-height: 70px;
+    
+}
+#basic-form #edit-btn{
+    cursor: pointer;
+    color:white;
+    padding: 10px 10px;
+    position: absolute;
+    right: .2em;
+    top: .005em;
+    content: '';
+
+}
+.basic-ingredient #edit-recommend{
+    cursor: pointer;
+    color:white;
+    padding: 10px 10px;
+    /* position: absolute;
+    right: .2em;
+    top: 1.8em;
+    content: ''; */
+
+}
+
+.basic-ingredient form{
+    width:100%;
+    height: fit-content;
+}
+.basic-ingredient textarea{
+    width: 70%;
+    background-color: transparent;
+    color:#A5C9CA;
+    resize:vertical;
+    border-radius: 10px;
+}
+.basic-ingredient input{
+    border: none;
+    align-text:center;
+}
+
+/* Mobile Device */
+@media (max-width: 480px) {
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .input-container .input-form {
+        margin: 20px 20px;
+        max-width:none;
+    
+    }
+}
+@media (max-width: 940px) {
+    .basic-ingredient .flex-col{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+/*# sourceMappingURL=/fridge.f6ff1746.css.map */

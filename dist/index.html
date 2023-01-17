@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/common.b1e2d4b4.css">
+    <link rel="stylesheet" href="/css.967bad95.css">
+    <link rel="stylesheet" href="/fridge.f6ff1746.css">
+    <link rel="stylesheet" href="/menuidea.6157d5ef.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <title>ClearMyFridge</title>
+<script src="/common.b1e2d4b4.js"></script><script src="/css.967bad95.js"></script><script src="/fridge.f6ff1746.js"></script><script src="/menuidea.6157d5ef.js"></script></head>
+
+<body>
+    <div class="wrap">
+        <div class="flex-row">
+            <div class="top-left" id="settings">&#9881;</div>
+
+            <div class="flex-col top-right info-box">
+                <div id="weather" class="flex-row"></div>
+                <h4 id="clock">00:00</h4>
+            </div>
+        </div>
+        <div id="login-form" class="hidden">
+            <form class="flex-row name-form">
+                <input type="text" placeholder="이름을 알려주세요." required="" maxlength="10">
+                <input type="submit" value="저장">
+            </form>
+        </div>
+
+        <div id="bubble" class="flex-row hidden">
+            <span id="greeting"></span>
+            <div id="menuidea" class="speech-bubble flex-row">
+                <span></span>
+                <img src="" alt="food picture" height="100px">
+            </div>
+        </div>
+
+
+        <!-- 입력 -->
+        <div class="basic-ingredient">
+            <span class="title"><b> 기본재료 </b></span>
+            <div id="basic-form">
+                <div></div>
+                <i id="edit-btn" title="수정">🖊</i>
+            </div>
+            <form class="flex-row">
+                <textarea required="" placeholder="소스/장류/음료 등 기본재료를 입력해주세요. (HTML태그 사용가능)"></textarea>
+                <div class="flex-col">
+                    <input type="submit" value="✔">
+                    <i id="edit-recommend" title="추천 템플릿을 복사합니다.">📋</i>
+                </div>
+            </form>
+        </div>
+
+        <div class="input-container">
+            <div id="fridge-form" class="input-form">
+                <span class="title"><b> 냉장고 </b></span>
+                <form>
+                    <input type="text" name="fridgeInput" required="" placeholder="냉장식품 입력">
+                </form>
+                <ul class="draggable-list"></ul>
+            </div>
+            <div id="freezer-form" class="input-form">
+                <span class="title"><b> 냉동실 </b></span>
+                <form>
+                    <input type="text" name="freezerInput" required="" placeholder="냉동식품 입력">
+                </form>
+                <ul class="draggable-list"></ul>
+            </div>
+            <div id="nonPerishable-form" class="input-form">
+                <span class="title"><b> 실온 </b></span>
+                <form>
+                    <input type="text" name="nonPeriInput" required="" placeholder="상온식품 입력">
+                </form>
+                <ul class="draggable-list"></ul>
+            </div>
+
+        </div>
+
+
+        <script src="/js.00a46daa.js"></script>
+        <script src="/clock.9ff9a60b.js"></script>
+        <script src="/fridge.85166372.js"></script>
+        <script src="/basicIngredient.b38ffc63.js"></script>
+        <script src="/weather.2dcc02e5.js"></script>
+
+        <footer>
+            <p>
+                <span><b>Ⓒ 2023.<a href="https://github.com/thesunny-dev/ClearMyFridge">sunnydaysinseoul</a> -
+                        ClearMyFridge</b></span>
+                <br>
+                All rights reserved.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
